@@ -3,10 +3,10 @@ import { AppBar, Toolbar, Typography, Button, Box, styled, keyframes } from '@mu
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 const GlassAppBar = styled(AppBar)(({ theme, isScrolled }) => ({
-  background: isScrolled ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.05)',
+  background: isScrolled ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
   backdropFilter: isScrolled ? 'blur(10px)':'none',
   boxShadow: isScrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none',
-  border: '1px solid rgba(255, 255, 255, 0.1)',
+  border: isScrolled?'1px solid rgba(255, 255, 255, 0.05)':'1px solid rgba(255, 255, 255, 0)',
   height: '64px',
   display: 'flex',
   justifyContent: 'center',
@@ -25,17 +25,6 @@ const StyledToolbar = styled(Toolbar)({
   padding: '0 24px',
   width: '100%',
 });
-
-const GradientHint = styled(Box)(({ isScrolled }) => ({
-  position: 'absolute',
-  left: 0,
-  top: 0,
-  bottom: 0,
-  width: '4px',
-  background: 'linear-gradient(to bottom, #6366f1 30%, #8b5cf6 90%)',
-  opacity: isScrolled ? 0 : 0.7,
-  transition: 'opacity 0.3s ease',
-}));
 
 const gradientShift = keyframes`
   0% { background-position: 0% 50%; }
@@ -186,13 +175,12 @@ function Navbar() {
 
   return (
     <GlassAppBar position="fixed" isScrolled={isScrolled}>
-      <GradientHint isScrolled={isScrolled} />
       <StyledToolbar>
-        <BrandText variant="h6" onClick={() => scrollToSection('home')}>
+        <BrandText variant="h6" onClick={() => scrollToSection('hero')}>
           Zeon.
         </BrandText>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <RollingButton onClick={() => scrollToSection('home')}>Home</RollingButton>
+          <RollingButton onClick={() => scrollToSection('hero')}>Home</RollingButton>
           <RollingButton onClick={() => scrollToSection('use-cases')}>Use Cases</RollingButton>
           <RollingButton onClick={() => scrollToSection('features')}>Features</RollingButton>
           <SignUpRollingButton>

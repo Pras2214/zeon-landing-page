@@ -5,6 +5,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import PersonIcon from '@mui/icons-material/Person';
 import CreateIcon from '@mui/icons-material/Create';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const UseCasesSection = styled(Box)({
@@ -15,7 +16,7 @@ const UseCasesSection = styled(Box)({
 });
 
 const GlassCard = styled(Box)({
-  background: 'rgba(90, 90, 90, 0.25)',
+  background: 'rgba(28,28,39, 0.8)',
   borderRadius: '24px',
   padding: '32px',
   width: '100%',
@@ -47,7 +48,8 @@ function UseCases() {
     { icon: <CreateIcon fontSize="large" />, title: 'Content Curation for Bloggers', description: 'Streamline your content creation process by curating and organizing ideas and resources.' },
     { icon: <SchoolIcon fontSize="large" />, title: 'Research Aggregation for Students', description: 'Gather, analyze, and synthesize information from multiple sources for in-depth research.' },
     { icon: <BookmarkIcon fontSize="large" />, title: 'Topic-based Bookmarking', description: 'Save and categorize web content efficiently for easy retrieval and reference.' },
-    { icon: <TrendingUpIcon fontSize="large" />, title: 'Trend Analysis for Marketers', description: 'Track and analyze industry trends by curating relevant content from various sources.' }
+    { icon: <TrendingUpIcon fontSize="large" />, title: 'Trend Analysis for Marketers', description: 'Track and analyze industry trends by curating relevant content from various sources.' },
+    { icon: <BusinessCenterIcon fontSize="large" />, title: 'Project Management for Teams', description: 'Collaborate and organize project-related information, tasks, and resources in one central hub.' }
   ];
 
   return (

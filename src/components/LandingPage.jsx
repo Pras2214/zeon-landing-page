@@ -3,9 +3,10 @@ import { styled, Box, keyframes } from '@mui/material';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { Meteors } from "./Meteors.jsx"
-import HomePage from './HomePage';
+import Hero from './Hero';
 import UseCases from './UseCases';
 import Features from './Features';
+import CTA from './CTA';
 
 const backgroundAnimation = keyframes`
   0% { background-position: 0% 50%; }
@@ -78,7 +79,7 @@ function LandingPage() {
       />
       <Box sx={{ position: 'relative', zIndex: 1 }}>
         <Box id="home">
-          <HomePage />
+          <Hero />
         </Box>
         <Divider />
         <Box id="use-cases">
@@ -87,6 +88,10 @@ function LandingPage() {
         <Divider />
         <Box id="features">
           <Features />
+        </Box>
+        <Divider />
+        <Box id="cta">
+          <CTA />
         </Box>
       </Box>
       <Meteors number={15}/>
