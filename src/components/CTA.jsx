@@ -147,6 +147,35 @@ function CTA() {
             <RollingButton
               variant="contained"
               size="large"
+              onClick={async () => {
+                try {
+                    const r = await fetch('http://localhost:8080/joinwaitlist/zeon', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            name: 'Mohit',
+                            recipients: email,
+                            subject: 'Zeon',
+                            intro: 'Welcome to Zeon!',
+                            password: 'stickitup',
+                        }),
+                        headers: {
+                          'Content-Type': 'application/json',
+                            'x-password': 'stickitup',
+                        },
+                    });
+
+                    const res = await r.json();
+
+                    if (res.success) {
+                        alert('Email sent');
+                    } else {
+                        throw new Error();
+                    }
+                } catch (e) {
+                    console.log(e)
+                    alert('Email failed');
+                }
+            }}
             >
               <span>Join Waitlist</span>
             </RollingButton>
