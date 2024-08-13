@@ -53,8 +53,10 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     borderRadius: '28px',
     padding: '4px 16px',
     transition: 'all 0.3s ease-in-out',
+    border: '1px solid rgba(99, 102, 241, 0)',
     '&:hover, &.Mui-focused': {
       background: 'rgba(255, 255, 255, 0.1)',
+      border: '1px solid rgba(99, 102, 241, 1)',
       boxShadow: '0 0 15px rgba(99, 102, 241, 0.4)',
     },
   },
@@ -65,6 +67,9 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     border: '1px solid rgba(255, 255, 255, 0)',
     transition: 'border-color 0.3s ease-in-out',
   },
+  '&:hover .MuiOutlinedInput-notchedOutline' : {
+    border: '1px solid rgba(99, 102, 241, 1)'
+  },
   '&:hover .MuiOutlinedInput-notchedOutline, & .Mui-focused .MuiOutlinedInput-notchedOutline': {
     border: '1px solid rgba(99, 102, 241, 1)',
   },
@@ -73,6 +78,8 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   },
   '& .MuiInputLabel-root.Mui-focused': {
     color: 'white',
+    fontSize: 'large',
+    top: '-6%',
   },
   '& .MuiInputLabel-shrink': {
     transform: 'translate(16px, -6px) scale(0.75)',
