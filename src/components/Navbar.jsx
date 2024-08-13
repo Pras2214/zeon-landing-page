@@ -12,10 +12,9 @@ const GlassAppBar = styled(AppBar)(({ theme, isScrolled }) => ({
   justifyContent: 'center',
   position: 'fixed',
   top: isScrolled ? '16px' : 0,
-  left: isScrolled ? '50%' : 0,
+  left: isScrolled ? '25%' : 0,
   width: isScrolled ? '50%' : '100%',
   maxWidth: '100%',
-  transform: isScrolled ? 'translateX(-50%)' : 'none',
   borderRadius: isScrolled ? '32px' : 0,
   transition: 'all 0.5s ease',
 }));

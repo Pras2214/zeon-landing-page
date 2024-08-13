@@ -61,6 +61,15 @@ function LandingPage() {
       />
       <GlowingBlob 
         sx={{ 
+          top: '30%', 
+          left: '30%', 
+          width: '200px', 
+          height: '200px', 
+          background: 'rgba(167, 139, 250, 0.3)' 
+        }} 
+      />
+      <GlowingBlob 
+        sx={{ 
           top: '60%', 
           right: '10%', 
           width: '250px', 

@@ -55,7 +55,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     transition: 'all 0.3s ease-in-out',
     '&:hover, &.Mui-focused': {
       background: 'rgba(255, 255, 255, 0.1)',
-      boxShadow: '0 0 15px rgba(99, 102, 241, 0.2)',
+      boxShadow: '0 0 15px rgba(99, 102, 241, 0.4)',
     },
   },
   '& .MuiInputBase-input': {
@@ -66,7 +66,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     transition: 'border-color 0.3s ease-in-out',
   },
   '&:hover .MuiOutlinedInput-notchedOutline, & .Mui-focused .MuiOutlinedInput-notchedOutline': {
-    borderColor: 'rgba(99, 102, 241, 1)',
+    border: '1px solid rgba(99, 102, 241, 1)',
   },
   '& .MuiInputLabel-root': {
     color: 'rgba(255, 255, 255, 0.7)',

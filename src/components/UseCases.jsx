@@ -16,7 +16,7 @@ const UseCasesSection = styled(Box)({
 });
 
 const GlassCard = styled(Box)({
-  background: 'rgba(28,28,39, 0.8)',
+  background: 'rgba(28,28,39, 0.6)',
   borderRadius: '24px',
   padding: '32px',
   width: '100%',
@@ -86,13 +86,14 @@ function UseCases() {
                         borderRadius: '30px',
                         background: 'linear-gradient(135deg, rgba(50, 50, 90, 0.8), rgba(60, 60, 100, 0.8))',
                         boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.2) inset, 0 8px 20px rgba(0, 0, 0, 0.3)',
-                        zIndex: 20,
+                        zIndex: 0,
                       }}
                       layoutId="hoverBackground"
                       initial={{ opacity: 0 }}
                       animate={{
                         opacity: 1,
                         transition: { duration: 0.2 },
+                        zIndex:0,
                       }}
                       exit={{
                         opacity: 0,
