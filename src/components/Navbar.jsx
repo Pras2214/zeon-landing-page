@@ -12,18 +12,20 @@ const GlassAppBar = styled(AppBar)(({ theme, isScrolled, isMobile }) => ({
   display: 'flex',
   justifyContent: 'center',
   position: 'fixed',
-  top: isScrolled ? (isMobile ? 0 : '16px') : 0,
-  left: isScrolled ? (isMobile ? 0 : '25%') : 0,
-  width: isScrolled ? (isMobile ? '100%' : '50%') : '100%',
+  top: 0,
+  left: 0,
+  width: '100%',
   maxWidth: '100%',
-  borderRadius: isScrolled ? (isMobile ? 0 : '32px') : 0,
+  borderRadius: 0,
   transition: 'all 0.5s ease',
 }));
 
-const StyledToolbar = styled(Toolbar)(({ theme, isMobile }) => ({
+const StyledToolbar = styled(Toolbar)(({ theme, isScrolled, isMobile }) => ({
   justifyContent: 'space-between',
   padding: isMobile ? '0 16px' : '0 24px',
-  width: '100%',
+  width: isScrolled ? '100%' : '80%',
+  maxWidth: '1200px',
+  margin: '0 auto',
 }));
 
 const gradientShift = keyframes`
@@ -205,7 +207,7 @@ function Navbar() {
 
   return (
     <GlassAppBar position="fixed" isScrolled={isScrolled} isMobile={isMobile}>
-      <StyledToolbar isMobile={isMobile}>
+    <StyledToolbar isMobile={isMobile} isScrolled={isScrolled}>
         <BrandText variant="h6" onClick={() => scrollToSection('hero')}>
           Zeon.
         </BrandText>
