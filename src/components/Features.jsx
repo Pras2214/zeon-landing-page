@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box, Grid, Typography, Container, styled } from '@mui/material';
+import { Box, Grid, Typography, Container, styled, Stack } from '@mui/material';
 import WobbleCard from './UI/WobbleCard.jsx';
-import Feature3 from './Features/Feature1.jsx';
 import Feature1 from './Features/Feature1.jsx';
 import Feature2 from './Features/Feature2.jsx';
+import Feature4 from './Features/Feature4.jsx';
 
 const FeaturesSection = styled(Box)({
   padding: '64px 0',
@@ -28,10 +28,8 @@ const Features = () => {
         }}>
           Powerful Features for Content Curation
         </Typography>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} sx={{ position: 'relative' }}>
+        <Stack direction='row' gap='5'>
             <Box sx={{ 
-              position: 'relative', 
               height: '400px', 
               width: '120%', 
               marginLeft: '0',
@@ -41,10 +39,7 @@ const Features = () => {
                 <Feature1 />
               </WobbleCard>
             </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} sx={{ position: 'relative' }}>
             <Box sx={{ 
-              position: 'relative', 
               height: '400px', 
               width: '80%', 
               marginLeft: 'auto',
@@ -54,21 +49,30 @@ const Features = () => {
                 <Feature2 />
               </WobbleCard>
             </Box>
-          </Grid>
-          <Grid item xs={12} sx={{ position: 'relative' }}>
+        </Stack>
+        <Stack direction='row' gap='5'>
             <Box sx={{ 
-              position: 'relative', 
               height: '400px', 
-              width: '100%', 
-              margin: '0 auto',
-              zIndex: '2'
+              width: '80%', 
+              zIndex: '2',
+              marginLeft:0,
             }}>
               <WobbleCard className="p-4 sm:p-10">
-                <Feature3 />
+                <Feature2 />
               </WobbleCard>
             </Box>
-          </Grid>
-        </Grid>
+            <Box sx={{ 
+              height: '400px', 
+              width: '120%', 
+              zIndex: '2',
+              marginLeft: 'auto'
+            }}>
+              <WobbleCard className="p-4 sm:p-10">
+                <Feature4 />
+              </WobbleCard>
+            </Box>
+        </Stack>
+
       </Container>
     </FeaturesSection>
   );

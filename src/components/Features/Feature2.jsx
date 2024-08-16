@@ -7,7 +7,7 @@ import CodeIcon from '@mui/icons-material/Code';
 import StorageIcon from '@mui/icons-material/Storage';
 import CloudIcon from '@mui/icons-material/Cloud';
 
-const Feature3 = () => {
+const Feature2 = () => {
   return (
     <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', color: 'white' }}>
       <Box>
@@ -186,4 +186,4 @@ const Feature3 = () => {
   );
 };
 
-export default Feature3;
+export default Feature2;

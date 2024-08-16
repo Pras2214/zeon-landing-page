@@ -32,7 +32,6 @@ export default function Feature2() {
           fontSize: '20px',
           lineHeight: 1.5,
           textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
-          mb:2
         }}>
           Your personal curator on your finger tips whenever you need.
           </Typography>
