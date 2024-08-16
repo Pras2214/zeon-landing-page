@@ -158,7 +158,7 @@ function CTA() {
               size="large"
               onClick={async () => {
                 try {
-                    const r = await fetch('http://localhost:8080/joinwaitlist/zeon', {
+                    const r = await fetch('https://email.mohitpatel.life/joinwaitlist/zeon', {
                         method: 'POST',
                         body: JSON.stringify({
                             name: 'Mohit',
