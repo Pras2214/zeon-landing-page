@@ -58,9 +58,6 @@ function UseCases() {
         <Typography variant="h3" component="h2" sx={{ color: 'white', mb: 2, textAlign: 'center', fontWeight: 700, fontSize: '48px', lineHeight: 1.2, textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
           Transform Your Digital Content Management
         </Typography>
-        <Typography variant="body1" sx={{ color: 'rgba(255, 255, 255, 0.8)', mb: 6, textAlign: 'center', fontSize: '18px' }}>
-          Revolutionize your digital workflow with Zeon
-        </Typography>
         <Grid container spacing={4}>
           {useCases.map((useCase, idx) => (
             <Grid item xs={12} sm={6} md={4} key={idx}>

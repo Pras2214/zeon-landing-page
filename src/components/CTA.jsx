@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { styled, Box, Container, Button, Typography, TextField } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import { motion } from 'framer-motion';
+import { FlipWords } from './UI/FlipWords';
 
 const CTASection = styled(Box)({
   padding: '70px 0 120px',
@@ -22,7 +22,8 @@ const GlassCard = styled(Box)({
   boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
   border: '1px solid rgba(255, 255, 255, 0.18)',
   backdropFilter: 'blur(8px)',
-  textAlign: 'center',
+  textAlign: 'left',
+  paddingBottom: '48px'
 });
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -127,66 +128,119 @@ function RollingButton({ children, ...props }) {
   );
 }
 
+const ThankYouMessage = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  textAlign: 'center',
+  opacity: 0,
+  transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
+  '&.visible': {
+    opacity: 1,
+    transform: 'translate(-50%, -50%) scale(1)',
+  },
+  '&.hidden': {
+    opacity: 0,
+    transform: 'translate(-50%, -50%) scale(0.9)',
+  },
+}));
+
 function CTA() {
   const [email, setEmail] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
+  const buttonRef = useRef(null);
+  const rollingTexts = ['Content Creators.', 'Community Builders.', 'Professionals.', 'You.'];
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
 
+  useEffect(() => {
+    if (isSubmitted) {
+      setShowThankYou(true);
+      const timer = setTimeout(() => {
+        setShowThankYou(false);
+        setTimeout(() => setIsSubmitted(false), 500); // Delay resetting isSubmitted to allow for fade-out animation
+      }, 4500);
+      return () => clearTimeout(timer);
+    }
+  }, [isSubmitted]);
+
   return (
     <CTASection id="cta">
       <Container maxWidth="lg" sx={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <GlassCard>
-          <Typography variant="h2" component="h2" sx={{ color: 'white', mb: 3, fontWeight: 700, fontSize: { xs: '2.5rem', md: '3.5rem' }, lineHeight: 1.2, textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
-            Ready to Transform Your Digital Experience?
-          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', mb: 3 }}>
+            <Typography variant="h2" component="h2" sx={{ color: 'white', fontWeight: 700, fontSize: { xs: '2.5rem', md: '3.5rem' }, lineHeight: 1.2, textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
+              Zeon is for
+              <Box sx={{ minHeight: '1.2em', width: '100%' }}>
+              <FlipWords 
+                words={rollingTexts} 
+                duration={3000} 
+                className="text-[2.5rem] md:text-[3.5rem] font-bold"
+              />
+            </Box>
+            </Typography>
+          </Box>
           <Typography variant="h5" sx={{ color: 'rgba(255, 255, 255, 0.8)', mb: 5, fontWeight: 400, fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
             Join our waitlist and be the first to experience the future of content curation.
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, justifyContent: 'center' }}>
-            <StyledTextField
-              label="Enter your email"
-              variant="outlined"
-              fullWidth
-              value={email}
-              onChange={handleEmailChange}
-              sx={{ maxWidth: '400px' }}
-            />
-            <RollingButton
-              variant="contained"
-              size="large"
-              onClick={async () => {
-                try {
-                    const r = await fetch('https://email.mohitpatel.life/joinwaitlist/zeon', {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            name: 'Mohit',
-                            recipients: email,
-                            subject: 'Zeon',
-                            intro: 'Welcome to Zeon!',
-                            password: 'stickitup',
-                        }),
-                        headers: {
-                          'Content-Type': 'application/json',
-                        },
-                    });
+          <Box sx={{ position: 'relative', minHeight: '80px'}}>
+            <ThankYouMessage className={showThankYou ? 'visible' : 'hidden'}>
+              <Typography variant="h6" sx={{ color: 'white', fontWeight: 'lighter' }}>
+                Thank you for joining the waitlist!
+              </Typography>
+            </ThankYouMessage>
+            {!isSubmitted && (
+              <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, justifyContent: 'flex-start', alignItems:'center' }}>
+                <StyledTextField
+                  label="Enter your email"
+                  variant="outlined"
+                  fullWidth
+                  value={email}
+                  onChange={handleEmailChange}
+                  sx={{ maxWidth: '400px' }}
+                />
+                <RollingButton
+                  ref={buttonRef}
+                  variant="contained"
+                  size="large"
+                  onClick={async () => {
+                    try {
+                        const r = await fetch('https://email.mohitpatel.life/joinwaitlist/zeon', {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                name: 'Mohit',
+                                recipients: email,
+                                subject: 'Zeon',
+                                intro: 'Welcome to Zeon!',
+                                password: 'stickitup',
+                            }),
+                            headers: {
+                              'Content-Type': 'application/json',
+                            },
+                        });
 
-                    const res = await r.json();
+                        const res = await r.json();
 
-                    if (res.success) {
-                        alert('Email sent');
-                    } else {
-                        throw new Error();
+                        if (res.success) {
+                            setEmail(''); // Clear the email field
+                            setIsSubmitted(true); // Show thank you message
+                        } else {
+                            throw new Error();
+                        }
+                    } catch (e) {
+                        console.log(e)
+                        alert('Email failed');
                     }
-                } catch (e) {
-                    console.log(e)
-                    alert('Email failed');
-                }
-            }}
-            >
-              <span>Join Waitlist</span>
-            </RollingButton>
+                }}
+                >
+                  Join Waitlist
+                </RollingButton>
+              </Box>
+            )}
           </Box>
         </GlassCard>
       </Container>

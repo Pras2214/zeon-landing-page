@@ -1,18 +1,13 @@
-import { motion, useInView } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import React from 'react';
 import { Typography, Box } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import WebIcon from '@mui/icons-material/Web';
+import LanguageIcon from '@mui/icons-material/Language';
+import CodeIcon from '@mui/icons-material/Code';
+import StorageIcon from '@mui/icons-material/Storage';
+import CloudIcon from '@mui/icons-material/Cloud';
 
-const GlassBox = styled(Box)({
-  background: 'rgba(28,28,39,0.8)',
-  borderRadius: '24px',
-  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-  border: '1px solid rgba(255, 255, 255, 0.18)',
-  backdropFilter: 'blur(8px)',
-  overflow: 'hidden',
-});
-
-export default function Feature2() {
+const Feature3 = () => {
   return (
     <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', color: 'white' }}>
       <Box>
@@ -25,7 +20,7 @@ export default function Feature2() {
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
         }}>
-          24/7 Curation 
+          Easy sharing
         </Typography>
         <Typography variant="body1" sx={{ 
           color: 'rgba(255, 255, 255, 0.9)', 
@@ -33,78 +28,162 @@ export default function Feature2() {
           lineHeight: 1.5,
           textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
         }}>
-          Your personal curator on your finger tips whenever you need.
-          </Typography>
+          Share your curated content to the people around. 
+        </Typography>
       </Box>
-      <GlassBox sx={{ 
-        mt: 3,
-        position: 'relative',
-        width: '100%',
+      <Box sx={{
+        position: 'absolute',
+        width: '200px',
         height: '200px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        top: '120%',
+        left: '25%',
+        borderRadius: '50%',
+        border: '2px dashed rgba(255, 255, 255, 0.3)',
+        animation: 'rotate 20s linear infinite',
+        '@keyframes rotate': {
+          '0%': {
+            transform: 'rotate(0deg)',
+          },
+          '100%': {
+            transform: 'rotate(360deg)',
+          },
+        },
       }}>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.75 }}
-          style={{
+        <ShoppingCartIcon 
+          sx={{
             position: 'absolute',
-            width: '300px',
-            height: '300px',
-            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(139, 92, 246, 0.2) 50%, rgba(28, 28, 39, 0) 70%)',
-            borderRadius: '50%',
-            boxShadow: '0 0 20px rgba(99, 102, 241, 0.6), 0 0 60px rgba(139, 92, 246, 0.4)',
-            filter: 'blur(8px)',
+            top: '0',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '40px',
+            height: '40px',
+            color: 'white',
+            animation: 'rotateReverse 20s linear infinite',
+            '@keyframes rotateReverse': {
+              '0%': {
+                transform: 'translate(-50%, -50%) rotate(0deg)',
+              },
+              '100%': {
+                transform: 'translate(-50%, -50%) rotate(-360deg)',
+              },
+            },
           }}
         />
-        <CountDown />
-      </GlassBox>
+        <LanguageIcon
+          sx={{
+            position: 'absolute',
+            top: '100%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '40px',
+            height: '40px',
+            color: 'white',
+            animation: 'staticRotate 20s linear infinite',
+            '@keyframes staticRotate': {
+              '0%': {
+                transform: 'translate(-50%, -50%) rotate(0deg)',
+              },
+              '100%': {
+                transform: 'translate(-50%, -50%) rotate(-360deg)',
+              },
+            },
+          }}
+        />
+        <CodeIcon
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '100%',
+            transform: 'translate(-50%, -50%)',
+            width: '40px',
+            height: '40px',
+            color: 'white',
+            animation: 'staticRotate 20s linear infinite',
+            '@keyframes staticRotate': {
+              '0%': {
+                transform: 'translate(-50%, -50%) rotate(0deg)',
+              },
+              '100%': {
+                transform: 'translate(-50%, -50%) rotate(-360deg)',
+              },
+            },
+          }}
+        />
+        <CloudIcon
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '0',
+            transform: 'translate(-50%, -50%)',
+            width: '40px',
+            height: '40px',
+            color: 'white',
+            animation: 'staticRotate 20s linear infinite',
+            '@keyframes staticRotate': {
+              '0%': {
+                transform: 'translate(-50%, -50%) rotate(0deg)',
+              },
+              '100%': {
+                transform: 'translate(-50%, -50%) rotate(-360deg)',
+              },
+            },
+          }}
+        />
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '100px',
+          height: '100px',
+          borderRadius: '50%',
+          border: '2px dashed rgba(255, 255, 255, 0.3)',
+          animation: 'staticRotate 10s linear infinite',
+          '@keyframes staticRotate': {
+            '0%': {
+              transform: 'translate(-50%, -50%) rotate(0deg)',
+            },
+            '100%': {
+              transform: 'translate(-50%, -50%) rotate(-360deg)',
+            },
+          },
+        }}>
+          <WebIcon
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '0',
+              transform: 'translate(-50%, -50%)',
+              width: '40px',
+              height: '40px',
+              color: 'white',
+              animation: 'counterRotate 20s linear infinite',
+              '@keyframes counterRotate': {
+                '0%': {
+                  transform: 'translate(-50%, -50%) rotate(-360deg)',
+                },
+                '100%': {
+                  transform: 'translate(-50%, -50%) rotate(0deg)',
+                },
+              },
+            }}
+          />
+          <StorageIcon
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '100%',
+              transform: 'translate(-50%, -50%)',
+              width: '40px',
+              height: '40px',
+              color: 'white',
+              animation: 'counterRotate 20s linear infinite',
+            }}
+          />
+        </Box>
+      </Box>
     </Box>
   );
-}
-
-const CountDown = () => {
-  const ref = useRef(null);
-  const [count, setCount] = useState(0);
-  const [count2, setCount2] = useState(0);
-  const isInView = useInView(ref);
-
-  useEffect(() => {
-    if (!isInView) return;
-    const interval = setInterval(() => {
-      if (count === 24 && count2 === 7) {
-        clearInterval(interval);
-      } else {
-        setCount(count + 1);
-        setCount2(count2 < 7 ? count2 + 1 : count2);
-      }
-    }, 50);
-
-    return () => clearInterval(interval);
-  }, [count, count2, isInView]);
-
-  return (
-    <motion.div
-      ref={ref}
-      className="font-bold cursor-default"
-      style={{
-        fontSize: '70px',
-        background: 'linear-gradient(45deg, #e0e0ff, #ffffff)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        height: '100%',
-        textShadow: '0 0 10px rgba(224, 224, 255, 0.05), 0 0 20px rgba(224, 224, 255, 0.05), 0 0 30px rgba(224, 224, 255, 0.05)',
-        fontWeight: 'bold',
-        filter: 'drop-shadow(0 0 10px rgba(224, 224, 255, 0.05))'
-      }}
-    >
-      {count}/{count2}
-    </motion.div>
-  );
 };
+
+export default Feature3;

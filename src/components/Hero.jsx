@@ -94,7 +94,7 @@ function Hero() {
               Discover What Matters, Skip the Noise
             </Typography>
             <Typography variant="h4" sx={{ color: 'rgba(255, 255, 255, 0.8)', mb: 5, fontWeight: 400, fontSize: { xs: '1.5rem', md: '2rem' } }}>
-              Curate, Connect, and create with Zeon's intelligent content management
+              Curate, Connect, and Create with Zeon's intelligent content management
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
               <RollingButton
