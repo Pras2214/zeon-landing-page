@@ -1,29 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Toolbar, Typography, Button, Box, styled, keyframes } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box, styled, keyframes, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import MenuIcon from '@mui/icons-material/Menu';
 
-const GlassAppBar = styled(AppBar)(({ theme, isScrolled }) => ({
+const GlassAppBar = styled(AppBar)(({ theme, isScrolled, isMobile }) => ({
   background: isScrolled ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
-  backdropFilter: isScrolled ? 'blur(10px)':'none',
+  backdropFilter: isScrolled ? 'blur(10px)' : 'none',
   boxShadow: isScrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none',
-  border: isScrolled?'1px solid rgba(255, 255, 255, 0.05)':'1px solid rgba(255, 255, 255, 0)',
+  border: isScrolled ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid rgba(255, 255, 255, 0)',
   height: '64px',
   display: 'flex',
   justifyContent: 'center',
   position: 'fixed',
-  top: isScrolled ? '16px' : 0,
-  left: isScrolled ? '25%' : 0,
-  width: isScrolled ? '50%' : '100%',
+  top: isScrolled ? (isMobile ? 0 : '16px') : 0,
+  left: isScrolled ? (isMobile ? 0 : '25%') : 0,
+  width: isScrolled ? (isMobile ? '100%' : '50%') : '100%',
   maxWidth: '100%',
-  borderRadius: isScrolled ? '32px' : 0,
+  borderRadius: isScrolled ? (isMobile ? 0 : '32px') : 0,
   transition: 'all 0.5s ease',
 }));
 
-const StyledToolbar = styled(Toolbar)({
+const StyledToolbar = styled(Toolbar)(({ theme, isMobile }) => ({
   justifyContent: 'space-between',
-  padding: '0 24px',
+  padding: isMobile ? '0 16px' : '0 24px',
   width: '100%',
-});
+}));
 
 const gradientShift = keyframes`
   0% { background-position: 0% 50%; }
@@ -154,6 +155,8 @@ function SignUpRollingButton({ children, ...props }) {
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 960);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -161,8 +164,16 @@ function Navbar() {
       setIsScrolled(window.scrollY > scrollThreshold);
     };
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 650);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const scrollToSection = (sectionId) => {
@@ -170,22 +181,56 @@ function Navbar() {
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
+    setMobileMenuOpen(false);
   };
 
+  const MobileMenu = () => (
+    <Drawer
+      anchor="right"
+      open={mobileMenuOpen}
+      onClose={() => setMobileMenuOpen(false)}
+    >
+      <List>
+        {['Home', 'Use Cases', 'Features'].map((text) => (
+          <ListItem button key={text} onClick={() => scrollToSection(text.toLowerCase().replace(' ', '-'))}>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+        <ListItem>
+          <SignUpRollingButton>Sign Up</SignUpRollingButton>
+        </ListItem>
+      </List>
+    </Drawer>
+  );
+
   return (
-    <GlassAppBar position="fixed" isScrolled={isScrolled}>
-      <StyledToolbar>
+    <GlassAppBar position="fixed" isScrolled={isScrolled} isMobile={isMobile}>
+      <StyledToolbar isMobile={isMobile}>
         <BrandText variant="h6" onClick={() => scrollToSection('hero')}>
           Zeon.
         </BrandText>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <RollingButton onClick={() => scrollToSection('hero')}>Home</RollingButton>
-          <RollingButton onClick={() => scrollToSection('use-cases')}>Use Cases</RollingButton>
-          <RollingButton onClick={() => scrollToSection('features')}>Features</RollingButton>
-          <SignUpRollingButton>
-            Sign Up
-          </SignUpRollingButton>
-        </Box>
+        {isMobile ? (
+          <>
+            <IconButton 
+              edge="start" 
+              color="inherit" 
+              aria-label="menu" 
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <MobileMenu />
+          </>
+        ) : (
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <RollingButton onClick={() => scrollToSection('hero')}>Home</RollingButton>
+            <RollingButton onClick={() => scrollToSection('use-cases')}>Use Cases</RollingButton>
+            <RollingButton onClick={() => scrollToSection('features')}>Features</RollingButton>
+            <SignUpRollingButton>
+              Sign Up
+            </SignUpRollingButton>
+          </Box>
+        )}
       </StyledToolbar>
     </GlassAppBar>
   );
