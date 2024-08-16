@@ -6,6 +6,7 @@ import LanguageIcon from '@mui/icons-material/Language';
 import CodeIcon from '@mui/icons-material/Code';
 import StorageIcon from '@mui/icons-material/Storage';
 import CloudIcon from '@mui/icons-material/Cloud';
+import { Image } from '@mui/icons-material';
 
 const Feature2 = () => {
   return (
@@ -49,7 +50,10 @@ const Feature2 = () => {
           },
         },
       }}>
-        <ShoppingCartIcon 
+        <Box
+          component="img"
+          alt="empty content"
+          src="/src/public/threads.svg"
           sx={{
             position: 'absolute',
             top: '0',
@@ -69,7 +73,10 @@ const Feature2 = () => {
             },
           }}
         />
-        <LanguageIcon
+        <Box
+          component="img"
+          alt="empty content"
+          src="/src/public/wordpress.svg"
           sx={{
             position: 'absolute',
             top: '100%',
@@ -89,7 +96,10 @@ const Feature2 = () => {
             },
           }}
         />
-        <CodeIcon
+        <Box
+          component="img"
+          alt="empty content"
+          src="/src/public/reddit.svg"
           sx={{
             position: 'absolute',
             top: '50%',
@@ -109,7 +119,10 @@ const Feature2 = () => {
             },
           }}
         />
-        <CloudIcon
+        <Box
+          component="img"
+          alt="empty content"
+          src="/src/public/discord.svg"
           sx={{
             position: 'absolute',
             top: '50%',
@@ -148,27 +161,34 @@ const Feature2 = () => {
             },
           },
         }}>
-          <WebIcon
-            sx={{
-              position: 'absolute',
-              top: '50%',
-              left: '0',
-              transform: 'translate(-50%, -50%)',
-              width: '40px',
-              height: '40px',
-              color: 'white',
-              animation: 'counterRotate 20s linear infinite',
-              '@keyframes counterRotate': {
-                '0%': {
-                  transform: 'translate(-50%, -50%) rotate(-360deg)',
-                },
-                '100%': {
-                  transform: 'translate(-50%, -50%) rotate(0deg)',
-                },
-              },
-            }}
-          />
-          <StorageIcon
+          
+<Box
+  component="img"
+  alt="empty content"
+  src="/src/public/twitter.svg"
+  sx={{
+    position: 'absolute',
+    top: '50%',
+    left: '0',
+    transform: 'translate(-50%, -50%)',
+    width: '40px',
+    height: '40px',
+    color: 'white',
+    animation: 'counterRotate 20s linear infinite',
+    '@keyframes counterRotate': {
+      '0%': {
+        transform: 'translate(-50%, -50%) rotate(-360deg)',
+      },
+      '100%': {
+        transform: 'translate(-50%, -50%) rotate(0deg)',
+      },
+    },
+  }}
+/>
+          <Box
+          component="img"
+          alt="empty content"
+          src="/src/public/whatsapp.svg"
             sx={{
               position: 'absolute',
               top: '50%',
