@@ -169,7 +169,6 @@ function CTA() {
                         }),
                         headers: {
                           'Content-Type': 'application/json',
-                            'x-password': 'stickitup',
                         },
                     });
 
