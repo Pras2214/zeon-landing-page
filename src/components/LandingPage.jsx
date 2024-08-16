@@ -2,7 +2,7 @@ import React from 'react';
 import { styled, Box, keyframes } from '@mui/material';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { Meteors } from "./Meteors.jsx"
+import { Meteors } from "./UI/Meteors.jsx"
 import Hero from './Hero';
 import UseCases from './UseCases';
 import Features from './Features';

@@ -1,7 +1,7 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import LandingPage from "./components/LandingPage";
-import CustomCursor from "./components/CustomCursor";
+import CustomCursor from "./components/UI/CustomCursor";
 
 const theme = createTheme({
   typography: {

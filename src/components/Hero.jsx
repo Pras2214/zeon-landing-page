@@ -22,6 +22,7 @@ const GlassCard = styled(Box)({
   border: '1px solid rgba(255, 255, 255, 0.18)',
   backdropFilter: 'blur(8px)',
   textAlign: 'left',
+  paddinTop: '32px'
 });
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -87,23 +88,25 @@ function Hero() {
   return (
     <HeroSection id="hero">
       <Container maxWidth="lg" sx={{ display: 'flex', justifyContent: 'center' }}>
-        <GlassCard>
-          <Typography variant="h1" component="h1" sx={{ color: 'white', mb: 3, fontWeight: 700, fontSize: { xs: '3rem', md: '4rem' }, lineHeight: 1.2, textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
-            Discover What Matters, Skip the Noise
-          </Typography>
-          <Typography variant="h4" sx={{ color: 'rgba(255, 255, 255, 0.8)', mb: 5, fontWeight: 400, fontSize: { xs: '1.5rem', md: '2rem' } }}>
-            Curate, Connect, and create with Zeon's intelligent content management
-          </Typography>
-          <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
-            <RollingButton
-              variant="contained"
-              size="large"
-              onClick={() => document.getElementById('cta').scrollIntoView({ behavior: 'smooth' })}
-            >
-              Get Early Access
-            </RollingButton>
-          </Box>
-        </GlassCard>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '100%', maxWidth: '800px' }}>
+          <GlassCard>
+            <Typography variant="h1" component="h1" sx={{ color: 'white', mb: 3, fontWeight: 700, fontSize: { xs: '3rem', md: '4rem' }, lineHeight: 1.2, textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
+              Discover What Matters, Skip the Noise
+            </Typography>
+            <Typography variant="h4" sx={{ color: 'rgba(255, 255, 255, 0.8)', mb: 5, fontWeight: 400, fontSize: { xs: '1.5rem', md: '2rem' } }}>
+              Curate, Connect, and create with Zeon's intelligent content management
+            </Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+              <RollingButton
+                variant="contained"
+                size="large"
+                onClick={() => document.getElementById('cta').scrollIntoView({ behavior: 'smooth' })}
+              >
+                Get Early Access
+              </RollingButton>
+            </Box>
+          </GlassCard>
+        </Box>
       </Container>
     </HeroSection>
   );

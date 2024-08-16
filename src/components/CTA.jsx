@@ -75,11 +75,13 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   },
   '& .MuiInputLabel-root': {
     color: 'rgba(255, 255, 255, 0.7)',
+    marginLeft: '10px'
   },
   '& .MuiInputLabel-root.Mui-focused': {
     color: 'white',
     fontSize: 'large',
     top: '-6%',
+    marginLeft:'0'
   },
   '& .MuiInputLabel-shrink': {
     transform: 'translate(16px, -6px) scale(0.75)',

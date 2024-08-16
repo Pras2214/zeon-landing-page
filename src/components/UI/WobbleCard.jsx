@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { styled } from '@mui/material/styles';
 import { throttle } from 'lodash';
 
-const GlassCard = styled(motion.section)({
+export const GlassCard = styled(motion.section)({
     background: 'rgba(28,28,39,0.8)',
     borderRadius: '24px',
     padding: '32px',
