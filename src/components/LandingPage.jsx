@@ -99,9 +99,9 @@ function LandingPage() {
           <Features />
         </Box>
         <Divider />
-        {/* <Box id="cta">
+        <Box id="cta">
           <CTA />
-        </Box> */}
+        </Box>
       </Box>
       <Meteors number={15}/>
       <Footer />
