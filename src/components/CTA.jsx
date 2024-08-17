@@ -179,8 +179,8 @@ function CTA() {
             Join our waitlist and be the first to experience the future of content curation.
           </Typography>
           <Box sx={{ position: 'relative', minHeight: '80px'}}>
-            <ThankYouMessage className={showThankYou ? 'visible' : 'hidden'}>
-              <Typography variant="h6" sx={{ color: 'white', fontWeight: 'lighter' }}>
+            <ThankYouMessage className={showThankYou ? 'visible' : 'hidden' }>
+              <Typography variant="h6" sx={{ width:{xs:'200px',md:'500px'},fontSize:{xs:'18px',md:'28px'},color: 'white', fontWeight: 'lighter' }}>
                 Thank you for joining the waitlist!
               </Typography>
             </ThankYouMessage>
