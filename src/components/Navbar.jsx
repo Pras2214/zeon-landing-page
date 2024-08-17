@@ -130,12 +130,8 @@ function RollingButton({ children, ...props }) {
   );
 }
 
-function SignUpRollingButton({ children, isMobile, ...props }) {
+function SignUpRollingButton({ children, isMobile, onClick, ...props }) {
   const [isHovered, setIsHovered] = useState(false);
-
-  const handleSignUp = () => {
-    window.location.href = 'https://zeon-8qz.pages.dev/signin';
-  };
 
   return (
     <SignUpButton
@@ -143,7 +139,7 @@ function SignUpRollingButton({ children, isMobile, ...props }) {
       {...props}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={handleSignUp}
+      onClick={onClick}
     >
       <SignUpRollingTextContainer>
         <SignUpRollingText isHovered={isHovered}>
@@ -235,7 +231,7 @@ function Navbar() {
           </ListItem>
         ))}
         <ListItem>
-          <SignUpRollingButton isMobile={isMobile}>Sign Up</SignUpRollingButton>
+          <SignUpRollingButton isMobile={isMobile} onClick={() => scrollToSection('cta')}>Sign Up</SignUpRollingButton>
         </ListItem>
       </List>
     </StyledDrawer>
@@ -264,7 +260,7 @@ function Navbar() {
             <RollingButton onClick={() => scrollToSection('hero')}>Home</RollingButton>
             <RollingButton onClick={() => scrollToSection('use-cases')}>Use Cases</RollingButton>
             <RollingButton onClick={() => scrollToSection('features')}>Features</RollingButton>
-            <SignUpRollingButton>
+            <SignUpRollingButton onClick={() => scrollToSection('cta')}>
               Sign Up
             </SignUpRollingButton>
           </Box>
