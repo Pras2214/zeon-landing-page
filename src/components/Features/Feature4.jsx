@@ -71,7 +71,7 @@ const Feature4 = () => {
         setTimeout(() => {
           setActiveBox(null);
         }, 500);
-        setCurrentLine((prev) => (prev + 1) % 4);
+        setCurrentLine((prev) => (prev + 1) % 3); //Change the 3 based on the number of lines
       }, 700); // Match this with the particle animation duration
     };
 
@@ -185,27 +185,20 @@ const Feature4 = () => {
             <Box sx={particleStyle(0)} />
           </Box>
           <Box sx={boxStyle(1)}>
-            <SearchIcon sx={{ fontSize: '40px', color: '#66BB6A', ...iconStyle }} />
-            <Typography sx={tagStyle}>Search</Typography>
+            <CategoryIcon sx={{ fontSize: '40px', color: '#EF5350', ...iconStyle }} />
+            <Typography sx={tagStyle}>Categorize</Typography>
           </Box>
           <Box sx={lineStyle}>
             <Box sx={particleStyle(1)} />
           </Box>
           <Box sx={boxStyle(2)}>
-            <CategoryIcon sx={{ fontSize: '40px', color: '#EF5350', ...iconStyle }} />
-            <Typography sx={tagStyle}>Categorize</Typography>
+            <FindInPageIcon sx={{ fontSize: '40px', color: '#EF5350', ...iconStyle }} />
+            <Typography sx={tagStyle}>Discover</Typography>
           </Box>
           <Box sx={lineStyle}>
             <Box sx={particleStyle(2)} />
           </Box>
           <Box sx={boxStyle(3)}>
-            <FindInPageIcon sx={{ fontSize: '40px', color: '#EF5350', ...iconStyle }} />
-            <Typography sx={tagStyle}>Discover</Typography>
-          </Box>
-          <Box sx={lineStyle}>
-            <Box sx={particleStyle(3)} />
-          </Box>
-          <Box sx={boxStyle(4)}>
             <Box sx={{ display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems:'center', gap: '10px' }}>
               <WhatsAppIcon sx={{color: '#25D366', ...iconStyle }} />
               <XIcon sx={{ color: '#1DA1F2', ...iconStyle, fontSize: '32px',  }} />

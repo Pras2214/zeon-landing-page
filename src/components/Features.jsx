@@ -22,7 +22,7 @@ const Features = () => {
 
   return (
     <FeaturesSection>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" >
         <Typography variant="h3" component="h2" sx={{ 
           color: 'white', 
           mb: 4, 
@@ -31,8 +31,7 @@ const Features = () => {
           fontSize: { xs: '32px', sm: '40px', md: '48px' }, 
           lineHeight: 1.2, 
           textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-          fontFamily: '"Playfair Display", serif',
-        }}>
+          }}>
           Powerful Features for Content Curation
         </Typography>
         <Stack 

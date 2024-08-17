@@ -55,7 +55,7 @@ function UseCases() {
   return (
     <UseCasesSection>
       <Container maxWidth="lg">
-        <Typography variant="h3" component="h2" sx={{ color: 'white', mb: 2, textAlign: 'center', fontWeight: 700, fontSize: '48px', lineHeight: 1.2, textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
+        <Typography variant="h3" component="h2" sx={{ color: 'white', mb: 4, textAlign: 'center', fontWeight: 700, fontSize: { xs: '32px', sm: '40px', md: '48px' }, lineHeight: 1.2, textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
           Transform Your Digital Content Management
         </Typography>
         <Grid container spacing={4}>

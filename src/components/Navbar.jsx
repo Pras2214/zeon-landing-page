@@ -2,30 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Button, Box, styled, keyframes, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 const GlassAppBar = styled(AppBar)(({ theme, isScrolled, isMobile }) => ({
   background: isScrolled ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
   backdropFilter: isScrolled ? 'blur(10px)' : 'none',
   boxShadow: isScrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none',
-  border: isScrolled ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid rgba(255, 255, 255, 0)',
+  border: isScrolled?'1px solid rgba(255, 255, 255, 0.05)':'1px solid rgba(255, 255, 255, 0)',
   height: '64px',
   display: 'flex',
   justifyContent: 'center',
   position: 'fixed',
-  top: 0,
-  left: 0,
-  width: '100%',
+  top: isScrolled && !isMobile? '16px' : 0,
+  left: isScrolled && !isMobile ? '25%' : 0,
+  width: isScrolled && !isMobile ? '50%' : '100%',
   maxWidth: '100%',
-  borderRadius: 0,
+  borderRadius: isScrolled && !isMobile? '32px' : 0,
   transition: 'all 0.5s ease',
 }));
 
 const StyledToolbar = styled(Toolbar)(({ theme, isScrolled, isMobile }) => ({
   justifyContent: 'space-between',
   padding: isMobile ? '0 16px' : '0 24px',
-  width: isScrolled ? '100%' : '80%',
-  maxWidth: '1200px',
-  margin: '0 auto',
+  width: '100%',
 }));
 
 const gradientShift = keyframes`
@@ -79,7 +78,7 @@ const NavButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const SignUpButton = styled(Button)(({ theme }) => ({
+const SignUpButton = styled(Button)(({ theme, isMobile }) => ({
   background: 'linear-gradient(45deg, #6366f1 30%, #8b5cf6 90%)',
   borderRadius: '28px',
   border: 0,
@@ -87,7 +86,7 @@ const SignUpButton = styled(Button)(({ theme }) => ({
   height: '36px',
   padding: '0 16px',
   boxShadow: '0 3px 5px 2px rgba(99, 102, 241, 0.3)',
-  marginLeft: theme.spacing(2),
+  marginLeft: !isMobile && theme.spacing(2),
   '&:hover': {
     background: 'linear-gradient(45deg, #8b5cf6 30%, #6366f1 90%)',
   },
@@ -131,7 +130,7 @@ function RollingButton({ children, ...props }) {
   );
 }
 
-function SignUpRollingButton({ children, ...props }) {
+function SignUpRollingButton({ children, isMobile, ...props }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleSignUp = () => {
@@ -140,6 +139,7 @@ function SignUpRollingButton({ children, ...props }) {
 
   return (
     <SignUpButton
+      isMobile={isMobile}
       {...props}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -155,6 +155,37 @@ function SignUpRollingButton({ children, ...props }) {
   );
 }
 
+const slideIn = keyframes`
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+`;
+
+const StyledDrawer = styled(Drawer)(({ theme }) => ({
+  '& .MuiDrawer-paper': {
+    width: '250px',
+    background: 'rgba(255, 255, 255, 0.9)',
+    backdropFilter: 'blur(10px)',
+    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+    border: '1px solid rgba(255, 255, 255, 0.05)',
+    animation: `${slideIn} 0.3s forwards`,
+  },
+}));
+
+const DrawerHeader = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  padding: theme.spacing(1),
+}));
+
+const CloseButton = styled(IconButton)(({ theme }) => ({
+  color: theme.palette.common.black,
+}));
+
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 960);
@@ -167,7 +198,7 @@ function Navbar() {
     };
 
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 650);
+      setIsMobile(window.innerWidth < 1050);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -187,11 +218,16 @@ function Navbar() {
   };
 
   const MobileMenu = () => (
-    <Drawer
+    <StyledDrawer
       anchor="right"
       open={mobileMenuOpen}
       onClose={() => setMobileMenuOpen(false)}
     >
+      <DrawerHeader>
+        <CloseButton onClick={() => setMobileMenuOpen(false)}>
+          <CloseIcon />
+        </CloseButton>
+      </DrawerHeader>
       <List>
         {['Home', 'Use Cases', 'Features'].map((text) => (
           <ListItem button key={text} onClick={() => scrollToSection(text.toLowerCase().replace(' ', '-'))}>
@@ -199,10 +235,10 @@ function Navbar() {
           </ListItem>
         ))}
         <ListItem>
-          <SignUpRollingButton>Sign Up</SignUpRollingButton>
+          <SignUpRollingButton isMobile={isMobile}>Sign Up</SignUpRollingButton>
         </ListItem>
       </List>
-    </Drawer>
+    </StyledDrawer>
   );
 
   return (
@@ -219,7 +255,7 @@ function Navbar() {
               aria-label="menu" 
               onClick={() => setMobileMenuOpen(true)}
             >
-              <MenuIcon />
+              <MenuIcon fontSize="large"/>
             </IconButton>
             <MobileMenu />
           </>

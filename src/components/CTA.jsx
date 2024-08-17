@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { styled, Box, Container, Button, Typography, TextField } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
-import { FlipWords } from './UI/FlipWords';
 
 const CTASection = styled(Box)({
   padding: '70px 0 120px',
@@ -151,7 +150,6 @@ function CTA() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
   const buttonRef = useRef(null);
-  const rollingTexts = ['Content Creators.', 'Community Builders.', 'Professionals.', 'You.'];
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -174,14 +172,7 @@ function CTA() {
         <GlassCard>
           <Box sx={{ display: 'flex', flexDirection: 'column', mb: 3 }}>
             <Typography variant="h2" component="h2" sx={{ color: 'white', fontWeight: 700, fontSize: { xs: '2.5rem', md: '3.5rem' }, lineHeight: 1.2, textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
-              Zeon is for
-              <Box sx={{ minHeight: '1.2em', width: '100%' }}>
-              <FlipWords 
-                words={rollingTexts} 
-                duration={3000} 
-                className="text-[2.5rem] md:text-[3.5rem] font-bold"
-              />
-            </Box>
+              Discover What Matters, Skip the Noise
             </Typography>
           </Box>
           <Typography variant="h5" sx={{ color: 'rgba(255, 255, 255, 0.8)', mb: 5, fontWeight: 400, fontSize: { xs: '1.2rem', md: '1.5rem' } }}>

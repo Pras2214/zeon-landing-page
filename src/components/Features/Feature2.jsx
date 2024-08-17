@@ -1,12 +1,7 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import WebIcon from '@mui/icons-material/Web';
-import LanguageIcon from '@mui/icons-material/Language';
-import CodeIcon from '@mui/icons-material/Code';
-import StorageIcon from '@mui/icons-material/Storage';
-import CloudIcon from '@mui/icons-material/Cloud';
-import { Image } from '@mui/icons-material';
+import { FaRedditAlien, FaDiscord, FaXTwitter, FaWhatsapp,FaMedium } from "react-icons/fa6";
+import { MdOutlinePictureAsPdf } from "react-icons/md";
 
 const Feature2 = () => {
   return (
@@ -51,10 +46,9 @@ const Feature2 = () => {
         },
       }}>
         <Box
-          component="img"
           alt="empty content"
-          src="/src/public/threads.svg"
           sx={{
+            fontSize:'36px',
             position: 'absolute',
             top: '0',
             left: '50%',
@@ -72,12 +66,13 @@ const Feature2 = () => {
               },
             },
           }}
-        />
+        >
+          <FaMedium />
+        </Box>
         <Box
-          component="img"
           alt="empty content"
-          src="/src/public/wordpress.svg"
           sx={{
+            fontSize:"36px",
             position: 'absolute',
             top: '100%',
             left: '50%',
@@ -95,12 +90,13 @@ const Feature2 = () => {
               },
             },
           }}
-        />
+        >
+          <MdOutlinePictureAsPdf />
+        </Box>
         <Box
-          component="img"
           alt="empty content"
-          src="/src/public/reddit.svg"
           sx={{
+            fontSize:'36px',
             position: 'absolute',
             top: '50%',
             left: '100%',
@@ -118,12 +114,13 @@ const Feature2 = () => {
               },
             },
           }}
-        />
+        >
+          <FaRedditAlien />
+        </Box>
         <Box
-          component="img"
           alt="empty content"
-          src="/src/public/discord.svg"
           sx={{
+            fontSize:'36px',
             position: 'absolute',
             top: '50%',
             left: '0',
@@ -141,7 +138,9 @@ const Feature2 = () => {
               },
             },
           }}
-        />
+        >
+          <FaDiscord />
+        </Box>
         <Box sx={{
           position: 'absolute',
           top: '50%',
@@ -163,10 +162,9 @@ const Feature2 = () => {
         }}>
           
 <Box
-  component="img"
   alt="empty content"
-  src="/src/public/twitter.svg"
   sx={{
+    fontSize:'32px',
     position: 'absolute',
     top: '50%',
     left: '0',
@@ -184,12 +182,13 @@ const Feature2 = () => {
       },
     },
   }}
-/>
+>
+<FaXTwitter />
+</Box>
           <Box
-          component="img"
           alt="empty content"
-          src="/src/public/whatsapp.svg"
             sx={{
+              fontSize: '36px',
               position: 'absolute',
               top: '50%',
               left: '100%',
@@ -199,7 +198,9 @@ const Feature2 = () => {
               color: 'white',
               animation: 'counterRotate 20s linear infinite',
             }}
-          />
+          >
+            <FaWhatsapp />
+          </Box>
         </Box>
       </Box>
     </Box>
