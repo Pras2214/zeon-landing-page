@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
-import { FaRedditAlien, FaDiscord, FaXTwitter, FaWhatsapp,FaMedium } from "react-icons/fa6";
+import { FaDiscord, FaXTwitter, FaWhatsapp,FaMedium } from "react-icons/fa6";
+import { FaRedditAlien } from "react-icons/fa";
 import { MdOutlinePictureAsPdf } from "react-icons/md";
 
 const Feature2 = () => {
