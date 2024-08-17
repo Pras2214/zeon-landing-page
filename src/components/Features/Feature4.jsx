@@ -47,7 +47,7 @@ const borderLightUpAnimation = keyframes`
   }
 `;
 
-const Feature4 = () => {
+const Feature4 = ({isMobile}) => {
   const [isHovered, setIsHovered] = useState(false);
   const [activeParticles, setActiveParticles] = useState([false, false, false,false]);
   const [currentLine, setCurrentLine] = useState(0);
@@ -79,27 +79,27 @@ const Feature4 = () => {
       if (!activeParticles[currentLine]) {
         shootParticle();
       }
-    }, (0.5+(Math.random()*3))*1000); // Adjust timing as needed
+    }, 500); // Adjust timing as needed
 
     return () => clearInterval(intervalId);
   }, [activeParticles, currentLine]);
 
   const iconStyle = {
-    fontSize: '38px',
+    fontSize: { xs: '24px', md: '38px' },
     transition: 'all 0.3s ease-in-out',
     transform: isHovered ? 'scale(1.2)' : 'scale(1)',
-    color:'white'
+    color: 'white'
   };
 
   const tagStyle = {
-    fontSize: '12px',
+    fontSize: { xs: '10px', md: '12px' },
     color: 'rgba(255, 255, 255, 0.7)',
     textAlign: 'center',
     marginTop: '4px',
   };
 
   const lineStyle = {
-    flex: 2,
+    flex: { xs: 1, md: 2 },
     height: '2.5px',
     backgroundColor: '#333',
     mx: 0,
@@ -109,14 +109,14 @@ const Feature4 = () => {
 
   const particleStyle = (index) => ({
     position: 'absolute',
-    width: '40px',  // Increased from 30px
-    height: '8px',  // Increased from 4px
-    borderRadius: '4px',  // Adjusted for the new size
+    width: { xs: '20px', md: '40px' },
+    height: { xs: '4px', md: '8px' },
+    borderRadius: '4px',
     background: 'linear-gradient(90deg, #8A2BE2, #FFF)',
-    boxShadow: '0 0 15px 5px rgba(255, 255, 255, 0.7), 0 0 30px 10px rgba(138, 43, 226, 0.7)',  // Enhanced glow
-    top: '-3px',  // Adjusted to center the particle on the line
-    left: '-10px',  // Adjusted starting position
-    animation: activeParticles[index] ? `${particleAnimation} 0.7s ease-in-out` : 'none',  // Increased duration
+    boxShadow: '0 0 15px 5px rgba(255, 255, 255, 0.7), 0 0 30px 10px rgba(138, 43, 226, 0.7)',
+    top: '-3px',
+    left: '-10px',
+    animation: activeParticles[index] ? `${particleAnimation} 0.7s ease-in-out` : 'none',
     opacity: activeParticles[index] ? 1 : 0,
     zIndex: '1'
   });
@@ -124,7 +124,7 @@ const Feature4 = () => {
   const boxStyle = (index) => ({
     border: '1.5px solid rgba(255, 255, 255, 0.2)',
     borderRadius: '8px',
-    padding: '8px',
+    padding: { xs: '4px', md: '8px' },
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -141,8 +141,8 @@ const Feature4 = () => {
     }}>
       <Typography variant="h4" sx={{ 
         fontWeight: 700, 
-        fontSize: '32px',
-        mb: 2,
+        fontSize: {xs:'26px',md:'32px'},
+        mb: 0.5,
         textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
         background: 'linear-gradient(45deg, #e0e0ff, #ffffff)',
         WebkitBackgroundClip: 'text',
@@ -151,17 +151,23 @@ const Feature4 = () => {
         Smart Context Discovery
       </Typography>
       <Typography variant="body1" sx={{ 
-        color: 'rgba(255, 255, 255, 0.9)', 
-        fontSize: '20px',
+        color: 'rgba(255, 255, 255, 0.5)', 
+        fontSize: {xs:'16px',md:'20px'},
         lineHeight: 1.5,
         textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
       }}>
-        Provide Documents, Tweets, Reddit posts... and we'll find similar content for you to curate and share.
+        {!isMobile ? 'Provide Documents, Tweets, Reddit posts... and we will find similar content for you to curate and share.': 'Provide links and we will find similar content for you.'}
       </Typography>
       <GlassCard
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        sx={{mt: 2,padding:3}}
+        sx={{
+          mt: 1,
+          padding: { xs: 1, md: 3 },
+          height: { xs: 'auto', md: '240px' },
+          display: "flex",
+          alignItems: "center",
+        }}
       >
         <Box sx={{
           display: 'flex',
@@ -169,15 +175,15 @@ const Feature4 = () => {
           alignItems: 'center',
           width: '100%',
         }}>
-          <Box sx={{ ...boxStyle(0), gap: '10px', zIndex:'10' }}>
+          <Box sx={{ ...boxStyle(0), gap: { xs: '5px', md: '10px' }, zIndex: '10' }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-              <DescriptionIcon sx={{ fontSize: '32px', color: '#FFA726', ...iconStyle }} />
+              <DescriptionIcon sx={{ ...iconStyle, fontSize: { xs: '20px', md: '32px' } }} />
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <XIcon sx={{ color: '#1DA1F2', ...iconStyle, fontSize: '32px' }} />
+              <XIcon sx={{ ...iconStyle, fontSize: { xs: '20px', md: '32px' } }} />
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <RedditIcon sx={{ fontSize: '32px', color: '#FF4500', ...iconStyle }} />
+              <RedditIcon sx={{ ...iconStyle, fontSize: { xs: '20px', md: '32px' } }} />
               <Typography sx={tagStyle}>Input</Typography>
             </Box>
           </Box>
@@ -185,24 +191,24 @@ const Feature4 = () => {
             <Box sx={particleStyle(0)} />
           </Box>
           <Box sx={boxStyle(1)}>
-            <CategoryIcon sx={{ fontSize: '40px', color: '#EF5350', ...iconStyle }} />
+            <CategoryIcon sx={{ ...iconStyle, fontSize: { xs: '24px', md: '40px' } }} />
             <Typography sx={tagStyle}>Categorize</Typography>
           </Box>
           <Box sx={lineStyle}>
             <Box sx={particleStyle(1)} />
           </Box>
           <Box sx={boxStyle(2)}>
-            <FindInPageIcon sx={{ fontSize: '40px', color: '#EF5350', ...iconStyle }} />
+            <FindInPageIcon sx={{ ...iconStyle, fontSize: { xs: '24px', md: '40px' } }} />
             <Typography sx={tagStyle}>Discover</Typography>
           </Box>
           <Box sx={lineStyle}>
             <Box sx={particleStyle(2)} />
           </Box>
           <Box sx={boxStyle(3)}>
-            <Box sx={{ display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems:'center', gap: '10px' }}>
-              <WhatsAppIcon sx={{color: '#25D366', ...iconStyle }} />
-              <XIcon sx={{ color: '#1DA1F2', ...iconStyle, fontSize: '32px',  }} />
-              <PictureAsPdfIcon sx={{color: '#FF5722', ...iconStyle, fontSize: '32px' }} />
+            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: { xs: '5px', md: '10px' } }}>
+              <WhatsAppIcon sx={{...iconStyle, fontSize: { xs: '20px', md: '32px' } }} />
+              <XIcon sx={{ ...iconStyle, fontSize: { xs: '20px', md: '32px' } }} />
+              <PictureAsPdfIcon sx={{...iconStyle, fontSize: { xs: '20px', md: '32px' } }} />
             </Box>
             <Typography sx={tagStyle}>Output</Typography>
           </Box>

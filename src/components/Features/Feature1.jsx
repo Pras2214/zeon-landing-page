@@ -12,14 +12,14 @@ const GlassBox = styled(Box)({
   overflow: 'hidden',
 });
 
-export default function Feature2() {
+export default function Feature2({isMobile}) {
   return (
     <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', color: 'white' }}>
       <Box>
         <Typography variant="h4" sx={{ 
           fontWeight: 700, 
-          fontSize: '32px',
-          mb: 2,
+          fontSize: {xs:'26px',md:'32px'},
+          mb: 0.5,
           textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
           background: 'linear-gradient(45deg, #e0e0ff, #ffffff)',
           WebkitBackgroundClip: 'text',
@@ -28,8 +28,8 @@ export default function Feature2() {
           24/7 Curation 
         </Typography>
         <Typography variant="body1" sx={{ 
-          color: 'rgba(255, 255, 255, 0.9)', 
-          fontSize: '20px',
+          color: 'rgba(255, 255, 255, 0.5)', 
+          fontSize: {xs:'16px',md:'20px'},
           lineHeight: 1.5,
           textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
         }}>
@@ -37,10 +37,10 @@ export default function Feature2() {
           </Typography>
       </Box>
       <GlassBox sx={{ 
-        mt: 3,
+        mt: 1,
         position: 'relative',
         width: '100%',
-        height: '200px',
+        height: {xs:'160px',md:'240px'},
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -51,21 +51,21 @@ export default function Feature2() {
           transition={{ duration: 0.75 }}
           style={{
             position: 'absolute',
-            width: '300px',
-            height: '300px',
+            width: isMobile?'150px':'300px',
+            height: isMobile?'150px':'300px',
             background: 'radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(139, 92, 246, 0.2) 50%, rgba(28, 28, 39, 0) 70%)',
             borderRadius: '50%',
             boxShadow: '0 0 20px rgba(99, 102, 241, 0.6), 0 0 60px rgba(139, 92, 246, 0.4)',
             filter: 'blur(8px)',
           }}
         />
-        <CountDown />
+        <CountDown isMobile={isMobile}/>
       </GlassBox>
     </Box>
   );
 }
 
-const CountDown = () => {
+const CountDown = ({isMobile}) => {
   const ref = useRef(null);
   const [count, setCount] = useState(0);
   const [count2, setCount2] = useState(0);
@@ -90,7 +90,7 @@ const CountDown = () => {
       ref={ref}
       className="font-bold cursor-default"
       style={{
-        fontSize: '70px',
+        fontSize: isMobile?'50px':'70px',
         background: 'linear-gradient(45deg, #e0e0ff, #ffffff)',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',

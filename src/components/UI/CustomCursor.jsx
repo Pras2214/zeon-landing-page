@@ -9,8 +9,11 @@ const CursorBall = styled(animated.div)(({ theme }) => ({
   zIndex: 9999,
   width: '12px',
   height: '12px',
-  backgroundColor: '#6366f1', // Changed to match the theme color
-  boxShadow: '0 0 10px 2px rgba(99, 102, 241, 0.7)', // Adjusted glow effect
+  backgroundColor: '#6366f1',
+  boxShadow: '0 0 10px 2px rgba(99, 102, 241, 0.7)',
+  '@media (max-width: 1050px)': {
+    display: 'none',
+  },
 }));
 
 function CustomCursor() {
@@ -18,17 +21,16 @@ function CustomCursor() {
 
   const springProps = useSpring({
     to: { x: position.x, y: position.y - 20 },
-    config: { mass: 1, tension: 120, friction: 14 }, // Adjust these values for desired smoothness
+    config: { mass: 1, tension: 120, friction: 14 },
   });
 
   useEffect(() => {
     let timeoutId;
     const onMouseMove = (e) => {
-      // Add a slight delay
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         setPosition({ x: e.clientX, y: e.clientY });
-      }, 0); // 50ms delay, adjust as needed
+      }, 0);
     };
 
     document.addEventListener('mousemove', onMouseMove);

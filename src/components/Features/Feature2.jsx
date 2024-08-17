@@ -10,8 +10,8 @@ const Feature2 = () => {
       <Box>
         <Typography variant="h4" sx={{ 
           fontWeight: 700, 
-          fontSize: '32px',
-          mb: 2,
+          fontSize: {xs:'26px',md:'32px'},
+          mb: 0.5,
           textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
           background: 'linear-gradient(45deg, #e0e0ff, #ffffff)',
           WebkitBackgroundClip: 'text',
@@ -20,8 +20,8 @@ const Feature2 = () => {
           Easy sharing
         </Typography>
         <Typography variant="body1" sx={{ 
-          color: 'rgba(255, 255, 255, 0.9)', 
-          fontSize: '20px',
+          color: 'rgba(255, 255, 255, 0.5)', 
+          fontSize: {xs:'16px',md:'20px'},
           lineHeight: 1.5,
           textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
         }}>
@@ -30,8 +30,8 @@ const Feature2 = () => {
       </Box>
       <Box sx={{
         position: 'absolute',
-        width: '200px',
-        height: '200px',
+        width: {xs:'150px',md:'200px'},
+        height: {xs:'150px',md:'200px'},
         top: '120%',
         left: '25%',
         borderRadius: '50%',
@@ -49,7 +49,7 @@ const Feature2 = () => {
         <Box
           alt="empty content"
           sx={{
-            fontSize:'36px',
+            fontSize:{xs:'30px',md:'36px'},
             position: 'absolute',
             top: '0',
             left: '50%',
@@ -73,7 +73,7 @@ const Feature2 = () => {
         <Box
           alt="empty content"
           sx={{
-            fontSize:"36px",
+            fontSize:{xs:'30px',md:'36px'},
             position: 'absolute',
             top: '100%',
             left: '50%',
@@ -97,7 +97,7 @@ const Feature2 = () => {
         <Box
           alt="empty content"
           sx={{
-            fontSize:'36px',
+            fontSize:{xs:'30px',md:'36px'},
             position: 'absolute',
             top: '50%',
             left: '100%',
@@ -121,7 +121,7 @@ const Feature2 = () => {
         <Box
           alt="empty content"
           sx={{
-            fontSize:'36px',
+            fontSize:{xs:'30px',md:'36px'},
             position: 'absolute',
             top: '50%',
             left: '0',
@@ -147,8 +147,8 @@ const Feature2 = () => {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '100px',
-          height: '100px',
+          width: {xs:'60px',md:'100px'},
+          height: {xs:'60px',md:'100px'},
           borderRadius: '50%',
           border: '2px dashed rgba(255, 255, 255, 0.3)',
           animation: 'staticRotate 10s linear infinite',
@@ -165,7 +165,7 @@ const Feature2 = () => {
 <Box
   alt="empty content"
   sx={{
-    fontSize:'32px',
+    fontSize:{xs:'26px',md:'32px'},
     position: 'absolute',
     top: '50%',
     left: '0',
@@ -189,7 +189,7 @@ const Feature2 = () => {
           <Box
           alt="empty content"
             sx={{
-              fontSize: '36px',
+              fontSize: {xs:'30px',md:'36px'},
               position: 'absolute',
               top: '50%',
               left: '100%',

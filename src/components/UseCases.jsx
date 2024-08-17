@@ -55,7 +55,15 @@ function UseCases() {
   return (
     <UseCasesSection>
       <Container maxWidth="lg">
-        <Typography variant="h3" component="h2" sx={{ color: 'white', mb: 4, textAlign: 'center', fontWeight: 700, fontSize: { xs: '32px', sm: '40px', md: '48px' }, lineHeight: 1.2, textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
+      <Typography variant="h3" component="h2" sx={{ 
+          color: 'white', 
+          mb: 4, 
+          textAlign: 'center', 
+          fontWeight: 700, 
+          fontSize: { xs: '32px', sm: '40px', md: '48px' }, 
+          lineHeight: 1.2, 
+          textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+          }}>
           Transform Your Digital Content Management
         </Typography>
         <Grid container spacing={4}>
@@ -117,16 +125,21 @@ function UseCases() {
                   </IconWrapper>
                   <Typography variant="h6" sx={{ 
                     color: 'white', 
-                    mb: 2, 
-                    fontWeight: 600, 
-                    fontSize: '24px',
+                    mb: 0.5,
+                    fontWeight: 700, 
+                    fontSize: {xs:'20px',md:'24px'},
+                    textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+                    background: 'linear-gradient(45deg, #e0e0ff, #ffffff)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
                   }}>
                     {useCase.title}
                   </Typography>
                   <Typography variant="body2" sx={{ 
-                    color: 'rgba(255, 255, 255, 0.8)', 
-                    fontSize: '16px',
-                    lineHeight: 1.6,
+                    color: 'rgba(255, 255, 255, 0.5)', 
+                    fontSize: {xs:'14px',md:'16px'},
+                    lineHeight: 1.5,
+                    textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
                   }}>
                     {useCase.description}
                   </Typography>

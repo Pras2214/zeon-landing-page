@@ -3,6 +3,7 @@ import { Box, Typography, Container, styled, Stack, useMediaQuery, useTheme } fr
 import WobbleCard from './UI/WobbleCard.jsx';
 import Feature1 from './Features/Feature1.jsx';
 import Feature2 from './Features/Feature2.jsx';
+import Feature3 from './Features/Feature3.jsx';
 import Feature4 from './Features/Feature4.jsx';
 
 const FeaturesSection = styled(Box)(({ theme }) => ({
@@ -46,7 +47,7 @@ const Features = () => {
             zIndex: '2'
           }}>
             <WobbleCard className={`p-4 ${isMobile ? '' : 'sm:p-10'}`}>
-              <Feature1 />
+              <Feature1 isMobile={isMobile}/>
             </WobbleCard>
           </Box>
           <Box sx={{ 
@@ -71,7 +72,7 @@ const Features = () => {
             marginLeft: 0,
           }}>
             <WobbleCard className={`p-4 ${isMobile ? '' : 'sm:p-10'}`}>
-              <Feature2 />
+              <Feature3 isMobile={isMobile}/>
             </WobbleCard>
           </Box>
           <Box sx={{ 
@@ -81,7 +82,7 @@ const Features = () => {
             marginLeft: { xs: '0', md: 'auto' }
           }}>
             <WobbleCard className={`p-4 ${isMobile ? '' : 'sm:p-10'}`}>
-              <Feature4 />
+              <Feature4 isMobile={isMobile}/>
             </WobbleCard>
           </Box>
         </Stack>
