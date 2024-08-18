@@ -41,8 +41,7 @@ const BrandText = styled(Typography)(({ theme }) => ({
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   fontWeight: 700,
-  fontSize: '2.5rem',
-  marginRight: theme.spacing(2),
+  fontSize: '2.2rem',
   cursor: 'pointer',
   transition: 'transform 0.3s ease',
   '&:hover': {
@@ -65,6 +64,7 @@ const RollingText = styled(Box)(({ isHovered }) => ({
     height: '1em',
     lineHeight: '1em',
   },
+  fontSize:'97%',
 }));
 
 const NavButton = styled(Button)(({ theme }) => ({
@@ -194,7 +194,7 @@ function Navbar() {
     };
 
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 1050);
+      setIsMobile(window.innerWidth < 1090);
     };
 
     window.addEventListener('scroll', handleScroll);

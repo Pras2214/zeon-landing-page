@@ -152,11 +152,11 @@ const Feature4 = ({isMobile}) => {
       </Typography>
       <Typography variant="body1" sx={{ 
         color: 'rgba(255, 255, 255, 0.5)', 
-        fontSize: {xs:'16px',md:'20px'},
+        fontSize: {xs:'16px',md:'1.1rem'},
         lineHeight: 1.5,
         textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
       }}>
-        {!isMobile ? 'Provide Documents, Tweets, Reddit posts... and we will find similar content for you to curate and share.': 'Provide links and we will find similar content for you.'}
+        {!isMobile ? 'Provide links to the content of your choice and we will find similar content for you to curate and share.': 'Provide links and we will find similar content for you.'}
       </Typography>
       <GlassCard
         onMouseEnter={() => setIsHovered(true)}
