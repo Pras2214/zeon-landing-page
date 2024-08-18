@@ -21,7 +21,7 @@ const Feature2 = () => {
         </Typography>
         <Typography variant="body1" sx={{ 
           color: 'rgba(255, 255, 255, 0.5)', 
-          fontSize: {xs:'16px',md:'20px'},
+          fontSize: {xs:'0.8rem',md:'1.1rem'},
           lineHeight: 1.5,
           textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
         }}>
